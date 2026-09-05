@@ -1,0 +1,5 @@
+Reference,Leads,Params (M),Accuracy (%),Sensitivity (%)
+Proposed (Student),2,0.46,82.07,77.89
+HMT-KD [1],12→2,1.2,85.45,74.20
+Study A [2],12→6,2.1,83.20,71.50
+Study B [3],12→4,0.8,81.90,73.80

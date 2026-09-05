@@ -1,0 +1,2 @@
+Trial Name,Hidden Dim,Transformer Layers,Dropout,LR,Batch Size,Epochs,Val Acc (%),Val Sens (%),Val Spec (%)
+wider_transformer_v3,1024,3,0.15,7e-05,12,15,83.00503893724233,93.52941176470588,95.27611443779108

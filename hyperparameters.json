@@ -1,0 +1,26 @@
+{
+  "trials": [
+    {
+      "name": "wider_transformer_v3",
+      "learning_rate": 7e-5,
+      "weight_decay": 5e-4,
+      "transformer_layers": 3,
+      "transformer_hidden": 1024,
+      "dropout": 0.15,
+      "batch_size": 12,
+      "epochs_per_trial": 15,
+      "patience": 4
+    }
+  ],
+  "global": {
+    "warmup_epochs": 2,
+    "label_smoothing": 0.05,
+    "mixup_prob": 0.6,
+    "mixup_alpha": 0.3,
+    "ema_decay": 0.999,
+    "grad_clip": 1.0,
+    "seed": 42,
+    "checkpoint_dir": "C:\\ptbxl\\project\\checkpoints\\auto_teacher",
+    "log_dir": "C:\\ptbxl\\results\\auto_teacher"
+  }
+}

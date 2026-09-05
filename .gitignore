@@ -216,3 +216,17 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# PyTorch model files (large checkpoints)
+*.pt
+*.pth
+*.onnx
+
+# Ignore dataset and project files
+data/
+project/
+logs/
+venv/
+ecg_env/
+__pycache__/
+*.pyc
+.DS_Store

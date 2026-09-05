@@ -1,0 +1,7 @@
+Component,Description,Parameters
+Input,"2 leads (II, aVF)",-
+CNN Blocks,"3 Conv1d layers (32, 64, 128 channels)","~284,000"
+Transformer Layers,"2 layers, 4 heads, d_model=128","~141,000"
+Feature Projection,Conv1d 128→512,"~32,000"
+Classifier,2 Linear layers,"~27,000"
+Total,,"457,442"

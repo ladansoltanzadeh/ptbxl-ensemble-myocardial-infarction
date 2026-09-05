@@ -1,0 +1,2 @@
+model,threshold,accuracy,sensitivity,specificity,f1,auc,tp,fn,tn,fp
+Student (KD from Ensemble V1+V2),0.74,82.98453139217472,61.76890156918687,92.9191716766867,69.83870967741936,90.26307488967473,433,268,1391,106

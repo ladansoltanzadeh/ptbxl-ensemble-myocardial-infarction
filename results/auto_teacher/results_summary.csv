@@ -1,0 +1,2 @@
+trial_name,best_val_accuracy,best_threshold,val_accuracy_at_threshold,n_params,elapsed_seconds
+wider_transformer_v3,83.00503893724233,0.78,86.57810352725606,139389474,46768.650327920914

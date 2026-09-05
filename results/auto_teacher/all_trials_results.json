@@ -1,0 +1,189 @@
+[
+  {
+    "trial_name": "wider_transformer_v3",
+    "best_val_accuracy": 83.00503893724233,
+    "best_threshold": 0.78,
+    "val_accuracy_at_threshold": 86.57810352725606,
+    "elapsed_seconds": 46768.650327920914,
+    "config": {
+      "name": "wider_transformer_v3",
+      "learning_rate": 7e-05,
+      "weight_decay": 0.0005,
+      "transformer_layers": 3,
+      "transformer_hidden": 1024,
+      "dropout": 0.15,
+      "batch_size": 12,
+      "epochs_per_trial": 15,
+      "patience": 4
+    },
+    "n_params": 139389474,
+    "best_ema_state": null,
+    "history": [
+      {
+        "epoch": 1,
+        "trial": "wider_transformer_v3",
+        "train_loss": 0.5345108515939601,
+        "lr": 5.2749999999999995e-05,
+        "val_accuracy": 76.45442052221713,
+        "val_sensitivity": 34.85294117647059,
+        "val_specificity": 95.27611443779108,
+        "val_f1": 47.97570850202429,
+        "val_auc": 84.11862549410984
+      },
+      {
+        "epoch": 2,
+        "trial": "wider_transformer_v3",
+        "train_loss": 0.41144607985807846,
+        "lr": 1.8250000000000007e-05,
+        "val_accuracy": 78.42418689876317,
+        "val_sensitivity": 91.32352941176471,
+        "val_specificity": 72.58815701929474,
+        "val_f1": 72.50437828371278,
+        "val_auc": 91.17196978591836
+      },
+      {
+        "epoch": 3,
+        "trial": "wider_transformer_v3",
+        "train_loss": 0.37945937236499033,
+        "lr": 7e-05,
+        "val_accuracy": 79.84425103069171,
+        "val_sensitivity": 93.08823529411765,
+        "val_specificity": 73.85229540918164,
+        "val_f1": 74.20867526377491,
+        "val_auc": 92.4801377636883
+      },
+      {
+        "epoch": 4,
+        "trial": "wider_transformer_v3",
+        "train_loss": 0.3961519768702754,
+        "lr": 6.537787643056313e-05,
+        "val_accuracy": 79.06550618415025,
+        "val_sensitivity": 93.52941176470588,
+        "val_specificity": 72.52162341982701,
+        "val_f1": 73.56853672643146,
+        "val_auc": 92.31527141794842
+      },
+      {
+        "epoch": 5,
+        "trial": "wider_transformer_v3",
+        "train_loss": 0.38812269349441386,
+        "lr": 5.2749999999999995e-05,
+        "val_accuracy": 80.3481447549244,
+        "val_sensitivity": 92.79411764705883,
+        "val_specificity": 74.71723220226214,
+        "val_f1": 74.63039621525725,
+        "val_auc": 92.61976047904191
+      },
+      {
+        "epoch": 6,
+        "trial": "wider_transformer_v3",
+        "train_loss": 0.37723106915546845,
+        "lr": 3.5499999999999996e-05,
+        "val_accuracy": 81.12688960146586,
+        "val_sensitivity": 91.91176470588235,
+        "val_specificity": 76.24750499001996,
+        "val_f1": 75.21058965102286,
+        "val_auc": 92.90311533795156
+      },
+      {
+        "epoch": 7,
+        "trial": "wider_transformer_v3",
+        "train_loss": 0.3637658346793294,
+        "lr": 1.8250000000000007e-05,
+        "val_accuracy": 80.66880439761796,
+        "val_sensitivity": 92.5,
+        "val_specificity": 75.31603459747173,
+        "val_f1": 74.88095238095238,
+        "val_auc": 92.93276192712615
+      },
+      {
+        "epoch": 8,
+        "trial": "wider_transformer_v3",
+        "train_loss": 0.35284732655716994,
+        "lr": 5.622123569436864e-06,
+        "val_accuracy": 81.67659184608337,
+        "val_sensitivity": 91.02941176470588,
+        "val_specificity": 77.44510978043913,
+        "val_f1": 75.57997557997558,
+        "val_auc": 93.01113459355797
+      },
+      {
+        "epoch": 9,
+        "trial": "wider_transformer_v3",
+        "train_loss": 0.341616445900898,
+        "lr": 7e-05,
+        "val_accuracy": 82.77599633531837,
+        "val_sensitivity": 91.17647058823529,
+        "val_specificity": 78.97538256819693,
+        "val_f1": 76.73267326732673,
+        "val_auc": 92.99714296896401
+      },
+      {
+        "epoch": 10,
+        "trial": "wider_transformer_v3",
+        "train_loss": 0.3774518169585831,
+        "lr": 6.882444100697285e-05,
+        "val_accuracy": 81.63078332569857,
+        "val_sensitivity": 92.5,
+        "val_specificity": 76.71324018629407,
+        "val_f1": 75.8288125376733,
+        "val_auc": 93.08236468239991
+      },
+      {
+        "epoch": 11,
+        "trial": "wider_transformer_v3",
+        "train_loss": 0.37079369571809107,
+        "lr": 6.537787643056313e-05,
+        "val_accuracy": 83.00503893724233,
+        "val_sensitivity": 90.88235294117646,
+        "val_specificity": 79.44111776447106,
+        "val_f1": 76.91350342252645,
+        "val_auc": 93.09508434112168
+      },
+      {
+        "epoch": 12,
+        "trial": "wider_transformer_v3",
+        "train_loss": 0.3752420327110478,
+        "lr": 5.989518395093588e-05,
+        "val_accuracy": 82.77599633531837,
+        "val_sensitivity": 90.44117647058823,
+        "val_specificity": 79.3080505655356,
+        "val_f1": 76.58779576587796,
+        "val_auc": 92.798031388204
+      },
+      {
+        "epoch": 13,
+        "trial": "wider_transformer_v3",
+        "train_loss": 0.37499607620714615,
+        "lr": 5.2749999999999995e-05,
+        "val_accuracy": 82.5927622537792,
+        "val_sensitivity": 90.58823529411765,
+        "val_specificity": 78.97538256819693,
+        "val_f1": 76.42679900744417,
+        "val_auc": 92.86578803177959
+      },
+      {
+        "epoch": 14,
+        "trial": "wider_transformer_v3",
+        "train_loss": 0.37438425748062526,
+        "lr": 4.442925705603696e-05,
+        "val_accuracy": 81.21850664223545,
+        "val_sensitivity": 91.47058823529412,
+        "val_specificity": 76.58017298735862,
+        "val_f1": 75.21160822249094,
+        "val_auc": 92.7545399397284
+      },
+      {
+        "epoch": 15,
+        "trial": "wider_transformer_v3",
+        "train_loss": 0.3609198667365575,
+        "lr": 3.5499999999999996e-05,
+        "val_accuracy": 81.81401740723774,
+        "val_sensitivity": 90.0,
+        "val_specificity": 78.11044577511643,
+        "val_f1": 75.50894509561999,
+        "val_auc": 92.64950491174513
+      }
+    ]
+  }
+]

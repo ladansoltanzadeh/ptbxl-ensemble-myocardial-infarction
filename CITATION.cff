@@ -1,0 +1,56 @@
+# =============================================================================
+# CITATION.cff - Citation File Format for Ensemble Learning ECG Project
+# =============================================================================
+cff-version: 1.2.0
+message: "If you use this code or the results in your research, please cite it as follows:"
+title: "A Reproducible Ensemble Learning Framework for 12‑Lead ECG Classification of Myocardial Ischemia and Infarction"
+authors:
+  - family-names: "Soltanzadeh"
+    given-names: "Ladan"
+    orcid: "https://orcid.org/0000-0002-5190-8460"
+    affiliation: "Department of Computer Engineering, Urmia Branch, Islamic Azad University, Urmia, Iran"
+  - family-names: "Babazadeh Sangar"
+    given-names: "Amin"
+    orcid: "https://orcid.org/0000-0003-2300-5923"
+    affiliation: "Department of Computer Engineering, Urmia Branch, Islamic Azad University, Urmia, Iran"
+  - family-names: "Majidzadeh"
+    given-names: "Kambiz"
+    orcid: "https://orcid.org/0000-0001-5118-8910"
+    affiliation: "Department of Computer Engineering, Urmia Branch, Islamic Azad University, Urmia, Iran"
+  - family-names: "Hosseinpour"
+    given-names: "Vahid"
+    orcid: "https://orcid.org/0009-0005-4609-6401"
+    affiliation: "Department of Emergency Medicine, Urmia University of Medical Sciences, Urmia, Iran"
+
+corresponding-author:
+  - email: "aminbzh@iau.ac.ir"
+    family-names: "Babazadeh Sangar"
+    given-names: "Amin"
+
+date-released: 2026-09-05
+version: 1.0.0
+doi: "10.5281/zenodo.1234567"
+repository-code: "https://github.com/ladansoltanzadeh/ptbxl-ensemble-myocardial-infarction"
+url: "https://github.com/ladansoltanzadeh/ptbxl-ensemble-myocardial-infarction"
+
+abstract: |
+  This repository contains the complete code and results for the paper:
+  "A Reproducible Ensemble Learning Framework for 12‑Lead ECG Classification 
+  of Myocardial Ischemia and Infarction".
+  The project implements a systematic hyperparameter search and ensemble 
+  learning approach to develop a robust Teacher model for 12‑lead ECG 
+  classification, with comprehensive results including accuracy, sensitivity, 
+  specificity, and AUC on the PTB‑XL dataset.
+
+keywords:
+  - ECG classification
+  - Ensemble Learning
+  - Myocardial Infarction
+  - Ischemia
+  - PTB-XL
+  - Deep Learning
+  - Transformer
+  - Hyperparameter Search
+  - Reproducible Research
+
+license: MIT

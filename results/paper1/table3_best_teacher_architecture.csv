@@ -1,0 +1,10 @@
+Parameter,Value
+Architecture,CNN-Transformer
+Hidden Dimension,1024
+Transformer Layers,3
+Dropout,0.15
+Learning Rate,7e-05
+Batch Size,12
+Epochs,15
+Validation Accuracy,83.01%
+Validation Sensitivity,93.53%
