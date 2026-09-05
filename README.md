@@ -1,54 +1,151 @@
-# PTB-XL Teacher–Student Knowledge Distillation
+# A Reproducible Ensemble Learning Framework for 12‑Lead ECG Classification of Myocardial Ischemia and Infarction
 
-Reproducible research code for binary detection of **myocardial infarction (MI) or explicit ischemia** versus other ECG findings on PTB-XL, followed by a two-lead student trained with multi-level knowledge distillation.
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22347791.svg)](https://doi.org/10.5281/zenodo.22347791)
 
-## Data policy
+---
 
-This repository intentionally contains **no PTB-XL signals, metadata tables, checkpoints, virtual environments, caches, or other large generated files**. Download PTB-XL separately from PhysioNet and place it under `C:\ptbxl` (or adapt the configured root paths).
+## 📌 Overview
 
-## Split and evaluation policy
+This repository contains the complete, reproducible implementation of a systematic hyperparameter search and ensemble learning framework for binary classification of **myocardial infarction (MI) and ischemia** versus other ECG findings using 12‑lead ECG signals from the **PTB‑XL** dataset.
 
-- Training: official folds 1–8
-- Validation/model selection: fold 9
-- Final test: fold 10
-- Patient-disjoint integrity is checked by `02_create_splits.py`.
+The framework includes:
+
+- **Five Teacher architecture variants** with different hyperparameter configurations (hidden dimension, transformer layers, dropout, learning rate).
+- **Extended training variants (V2, V3)** with increased positive‑class weighting to improve sensitivity.
+- **Ensemble construction** via logit averaging (V1+V2) for improved generalization.
+- **Comprehensive evaluation** including accuracy, sensitivity, specificity, F1‑score, and AUC.
+
+**Key Results:**
+- **Best single architecture (V1):** 86.58% validation accuracy
+- **Final Ensemble (V1+V2):** **87.40% test accuracy**, **76.18% sensitivity**, **92.65% specificity**, **93.97% AUC**
+
+---
+
+## 📁 Repository Structure
+ptbxl-ensemble-myocardial-infarction/
+├── src/ # All Python source code
+│ ├── auto_train_teacher.py # Teacher training + hyperparameter search
+│ ├── ensemble_teacher.py # Ensemble construction (V1+V2)
+│ ├── generate_paper1_.py # Tables and figures for the main paper
+│ ├── generate_paper2_.py # Tables and figures for supplementary
+│ └── ...
+├── results/
+│ ├── paper1/ # Tables and figures for the main paper
+│ ├── paper2/ # Supplementary tables and figures
+│ ├── student/ # Student model evaluation results
+│ └── auto_teacher/ # Teacher trial results and ensemble metrics
+├── figures/ # High‑resolution figures used in the paper
+├── hyperparameters.json # Complete hyperparameter search configuration
+├── requirements.txt # Python dependencies
+├── environment.yml # Conda environment specification
+├── run_pipeline.py # Master script to reproduce all results
+├── CITATION.cff # Citation metadata
+└── README.md # This file
+
+text
+
+---
+
+## 📊 Data Policy
+
+This repository intentionally contains **no PTB‑XL signals, metadata tables, checkpoints, or other large generated files**.  
+Download PTB‑XL separately from [PhysioNet](https://physionet.org/content/ptb-xl/1.0.3/) and place it under `C:\ptbxl\data\ptbxl\` (or adapt the configured root paths).
+
+### Split and Evaluation Policy
+
+- **Training:** official folds 1–8
+- **Validation/model selection:** fold 9
+- **Final test:** fold 10
+- Patient‑disjoint integrity is maintained across all splits.
 - The test fold remains sealed until the teacher, threshold, and ensemble are finalized.
+- All reported results are based on a **single final evaluation on the test set**.
 
-## Pipeline
+---
 
-1. `01_audit_dataset.py` — audit dataset files and labels.
-2. `02_create_splits.py` — create patient-disjoint splits.
-3. `03_train_teacher.py` — train the 500 Hz teacher.
-4. `07_optimize_teacher_validation.py` — validation-only TTA/threshold search.
-5. `08_finetune_teacher.py` — resumable weak-augmentation fine-tuning.
-6. `09_fast_teacher_ensemble.py` — validation-only ensemble search.
-7. `10_train_fast_teacher_100hz.py` — lightweight 100 Hz teacher experiment.
-8. `11_train_official_xresnet.py` — adapted official PTB-XL XResNet1D101 experiment.
-9. `04_train_student.py` — baseline/KD student training after teacher selection.
-10. `05_evaluate_and_export.py` — one-time final test evaluation and exports.
-11. `06_build_research_bundle.py` — aggregate research outputs.
+## 🛠️ Setup and Installation
 
-## Windows setup
+### Windows Setup
 
-```powershell
-Set-ExecutionPolicy -Scope Process Bypass
-.\setup_environment.ps1
-.\run_pipeline.ps1
-```
+1. **Clone the repository:**
+   ```cmd
+   git clone https://github.com/ladansoltanzadeh/ptbxl-ensemble-myocardial-infarction.git
+   cd ptbxl-ensemble-myocardial-infarction
+Create a virtual environment (recommended):
 
-Long-running training scripts write resumable checkpoints approximately every five minutes. Generated artifacts belong in `results/` and model checkpoints are excluded from Git.
+cmd
+python -m venv ecg_env
+ecg_env\Scripts\activate
+Install dependencies:
 
-## Current validation status
+cmd
+pip install -r requirements.txt
+Or using Conda:
 
-The best completed configuration at the time of publication is the original/fine-tuned ensemble with validation Accuracy **87.769%** and AUC **93.225%**. The official XResNet1D101 adaptation is the current experiment. Fold 10 has not been evaluated.
+cmd
+conda env create -f environment.yml
+conda activate ecg_env
+Download the PTB‑XL dataset from PhysioNet and place it in C:\ptbxl\data\ptbxl\.
 
-See `results/ACTIVITY_REPORT.md` for the execution history, operational issues, decisions, and detailed tables.
+🚀 How to Reproduce the Results
+Run the Full Pipeline (Recommended)
+cmd
+python run_pipeline.py
+This master script executes the entire pipeline: data preparation → Teacher training → Ensemble construction → evaluation → figure generation.
 
-## Self-hosted runner safety
+Run Individual Steps (Optional)
+Step	Command
+Teacher Training	python src/auto_train_teacher.py --config hyperparameters.json --output results/auto_teacher --resume
+Teacher Ensemble	python src/ensemble_teacher.py
+Generate Paper Figures	python src/generate_paper1_figures_tables.py
+📊 Key Results
+Model / Ensemble	Accuracy (%)	Sensitivity (%)	Specificity (%)	AUC (%)
+V1+V2 Ensemble (Final)	87.40	76.18	92.65	93.97
+V1 Alone	86.08	76.46	90.58	92.94
+V2 (extended training)	85.39	88.82	84.50	–
+V3 (extended training)	83.01	93.53	79.44	–
+For full details, please refer to the paper and the tables in results/paper1/.
 
-The included workflow is manual-only and targets the label `ptbxl-local`. Do not add `pull_request` triggers to a public repository: untrusted workflow code must never execute on a personal laptop. The runner directory and credentials are ignored by Git.
+📖 Citation
+If you use this code or the results in your research, please cite it as:
 
-## Third-party source
+bibtex
+@software{soltanzadeh_2026_ecg_ensemble,
+  author = {Soltanzadeh, Ladan and Babazadeh Sangar, Amin and Majidzadeh, Kambiz and Hosseinpour, Vahid},
+  title = {A Reproducible Ensemble Learning Framework for 12‑Lead ECG Classification of Myocardial Ischemia and Infarction},
+  year = {2026},
+  publisher = {Zenodo},
+  version = {1.0.0},
+  doi = {10.5281/zenodo.22347791},
+  url = {https://doi.org/10.5281/zenodo.22347791}
+}
+You can also cite the GitHub repository directly:
 
-The adapted XResNet implementation under `external/official_ptbxl_models/` originates from the public PTB-XL benchmarking repository by Strodthoff et al. See `THIRD_PARTY_NOTICES.md` and the upstream license before redistribution or modification.
+bibtex
+@misc{soltanzadeh_2026_github,
+  author = {Soltanzadeh, Ladan and Babazadeh Sangar, Amin and Majidzadeh, Kambiz and Hosseinpour, Vahid},
+  title = {A Reproducible Ensemble Learning Framework for 12‑Lead ECG Classification of Myocardial Ischemia and Infarction},
+  year = {2026},
+  publisher = {GitHub},
+  url = {https://github.com/ladansoltanzadeh/ptbxl-ensemble-myocardial-infarction}
+}
+A CITATION.cff file is also available in the root directory.
 
+📬 Contact
+Corresponding Author:
+Amin Babazadeh Sangar
+📧 aminbzh@iau.ac.ir
+
+Affiliation:
+Department of Computer Engineering, Urmia Branch, Islamic Azad University, Urmia, Iran
+
+📄 License
+This project is licensed under the MIT License – see the LICENSE file for details.
+
+🔗 Links
+GitHub Repository: https://github.com/ladansoltanzadeh/ptbxl-ensemble-myocardial-infarction
+
+Zenodo DOI: 10.5281/zenodo.22347791
+
+PTB‑XL Dataset: PhysioNet
+
+Last Updated: 2026-09-05
